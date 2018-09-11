@@ -33,8 +33,7 @@ public class SccaUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails createUserPrincipal(User user) {
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUsername())
+        return org.springframework.security.core.userdetails.User.withUsername(user.getUsername())
                 .password(user.getPassword())
                 .roles(UserRoleEnum.getValue(user.getRole()))
                 .build();
