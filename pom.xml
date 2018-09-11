@@ -60,8 +60,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.java>1.8</version.java>
         <!--dependencies version-->
-        <version.spring-boot>1.5.14.RELEASE</version.spring-boot>
-        <version.spring-cloud>Edgware.SR3</version.spring-cloud>
+        <version.spring-boot>1.5.6.RELEASE</version.spring-boot>
+        <version.spring-cloud>Dalston.SR4</version.spring-cloud>
+        <!--<version.spring-boot>1.5.14.RELEASE</version.spring-boot>-->
+        <!--<version.spring-cloud>Edgware.SR3</version.spring-cloud>-->
         <!--plugin version-->
         <version.maven-javadoc-plugin>2.10.4</version.maven-javadoc-plugin>
         <version.maven-source-plugin>3.0.0</version.maven-source-plugin>
