@@ -30,6 +30,32 @@ public class GitPropertyController {
     @Autowired
     private SccaGitPlusProperties gitPlusProperties;
 
+    @RequestMapping(path = "/addLabel", method = RequestMethod.GET)
+    public Boolean addLabel(
+            @RequestParam String application,
+            @RequestParam String profile,
+            @RequestParam String label) {
+        // 访问Git上的存储的配置内容
+        ProjectInfo projectInfo = new ProjectInfo(application, profile, label, this.gitProperties, this.gitPlusProperties);
+        try {
+            // git clone properites from git
+            CmdRunner.execute("git clone " + projectInfo.getProjectUrl() + " " + projectInfo.getDir());
+
+            // git create branch(label)
+            CmdRunner.execute("git branch " + label, new File(projectInfo.getDir()));
+            // git checkout branch(label)
+            CmdRunner.execute("git checkout " + label, new File(projectInfo.getDir()));
+            //git push new branch
+            CmdRunner.execute("git push --set-upstream origin "+ label, new File(projectInfo.getDir()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            FileUtils.deleteDirectory(new File(projectInfo.getDir()));
+        }
+        return true;
+    }
+
     @RequestMapping(path = "/readProperties", method = RequestMethod.GET)
     public Properties readProperties(
             @RequestParam String application,

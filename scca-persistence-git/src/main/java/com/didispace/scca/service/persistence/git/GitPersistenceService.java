@@ -94,4 +94,12 @@ public class GitPersistenceService implements PersistenceService {
         // TODO 管理端修改环境名的时候，git存储需求修改存储的配置文件位置或者文件名
 
     }
+
+    @Override
+    public String addLabel(String application,String profile, String label) {
+        String url = urlMakerService.configServerBaseUrl(profile) + "/addLabel?application={1}&profile={2}&label={3}";
+        Boolean result = restTemplate.getForObject(url,Boolean.class, application,profile, label);
+        log.info("add {}-{} -{}", application,label, result);
+        return  result.toString();
+    }
 }

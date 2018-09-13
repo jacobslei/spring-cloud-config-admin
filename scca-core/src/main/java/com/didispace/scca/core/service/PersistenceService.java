@@ -84,4 +84,15 @@ public interface PersistenceService {
      */
     void updateProfileName(String oldName, String newName);
 
+    /***
+     *
+     * added  new label for application, 配置数据默认会继承master label
+     *
+     * @param application - application name
+     * @param profile -环境名称
+     * @param label - version name
+     * @return success or failed
+     */
+    String addLabel(String application,String profile, String label);
+
 }

@@ -178,6 +178,9 @@ public class ProjectController extends BaseController {
         Label label = new Label();
         label.setName(labelName);
         label.setProject(owner);
+        for (Env env : owner.getEnvs()) {
+            persistenceService.addLabel(owner.getName(),env.getName(),labelName);
+        }
         label = labelRepo.save(label);
 
         LabelDto dto = new LabelDto();

@@ -89,4 +89,11 @@ public class DbPersistenceService implements PersistenceService {
         log.info("update profile name {} -> {}, change property rows {}", oldName, newName, rows);
     }
 
+    @Override
+    public String addLabel(String application, String profile, String label) {
+        //TODO 
+        return "true";
+    }
+
+
 }
